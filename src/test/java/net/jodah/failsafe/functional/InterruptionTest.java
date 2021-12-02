@@ -26,6 +26,7 @@ public class InterruptionTest extends Testing {
         Thread.sleep(100);
         main.interrupt();
       } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
       }
     });
 
@@ -53,6 +54,7 @@ public class InterruptionTest extends Testing {
         Thread.sleep(100);
         main.interrupt();
       } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
       }
     });
 
@@ -101,6 +103,7 @@ public class InterruptionTest extends Testing {
         Thread.sleep(100);
         t.interrupt();
       } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
       }
     }).start();
 
