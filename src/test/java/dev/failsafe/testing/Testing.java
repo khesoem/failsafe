@@ -14,6 +14,11 @@
  * limitations under the License
  */
 package dev.failsafe.testing;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutionException;
 
 import dev.failsafe.CircuitBreaker;
 import dev.failsafe.FailsafeException;
@@ -137,6 +142,7 @@ public class Testing extends Logging {
     try {
       Thread.sleep(duration);
     } catch (InterruptedException ignore) {
+          Thread.currentThread().interrupt();
     }
   }
 
