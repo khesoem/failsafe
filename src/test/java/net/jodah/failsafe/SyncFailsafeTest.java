@@ -40,10 +40,10 @@ import static org.testng.Assert.*;
 @Test
 public class SyncFailsafeTest extends AbstractFailsafeTest {
   // Results from a synchronous Failsafe call
-  private @SuppressWarnings("unchecked") Class<? extends Throwable>[] syncThrowables = new Class[] {
+   @SuppressWarnings("unchecked")private Class<? extends Throwable>[] syncThrowables = new Class[] {
     ConnectException.class };
   // Results from a get against a future that wraps a synchronous Failsafe call
-  private @SuppressWarnings("unchecked") Class<? extends Throwable>[] futureSyncThrowables = new Class[] {
+   @SuppressWarnings("unchecked")private Class<? extends Throwable>[] futureSyncThrowables = new Class[] {
     ExecutionException.class, ConnectException.class };
 
   @BeforeMethod
@@ -210,6 +210,7 @@ public class SyncFailsafeTest extends AbstractFailsafeTest {
         Thread.sleep(100);
         main.interrupt();
       } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
       }
     });
 
@@ -237,6 +238,7 @@ public class SyncFailsafeTest extends AbstractFailsafeTest {
         Thread.sleep(100);
         main.interrupt();
       } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
       }
     });
 
@@ -389,6 +391,7 @@ public class SyncFailsafeTest extends AbstractFailsafeTest {
         Thread.sleep(100);
         t.interrupt();
       } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
       }
     }).start();
 
